@@ -46,6 +46,24 @@ export default function Home() {
       tags: ["Automation", "E-commerce", "AI Integration"],
       highlights: ["Schedule triggers", "AI processing", "Real-time updates"],
     },
+    {
+      id: 5,
+      title: "Staff Department SQL Challenge",
+      description: "A relational SQL analysis identifying every staff member who is not assigned to the HR department by joining staff and department records.",
+      image: "https://d2xsxph8kpxj0f.cloudfront.net/310519663066516107/TA2t7StPE7YiE25pWjBjYs/data-analytics-visual-UGBhBM8mGdo638gS65czAj.webp",
+      tags: ["SQL", "Joins", "Data Analysis"],
+      highlights: ["INNER JOIN logic", "Department filtering", "Validated result set"],
+      url: "https://github.com/Timmies50/portfolio-landing-page/blob/main/sql/sql-challenges/staff-not-in-hr.sql",
+    },
+    {
+      id: 6,
+      title: "Customers With Orders SQL Challenge",
+      description: "A customer-order reporting query that combines customer details with purchased products and order amounts using a focused INNER JOIN.",
+      image: "https://d2xsxph8kpxj0f.cloudfront.net/310519663066516107/TA2t7StPE7YiE25pWjBjYs/data-analytics-visual-UGBhBM8mGdo638gS65czAj.webp",
+      tags: ["SQL", "INNER JOIN", "Reporting"],
+      highlights: ["Customer-order matching", "Purchase reporting", "Expected output included"],
+      url: "https://github.com/Timmies50/portfolio-landing-page/blob/main/sql/sql-challenges/customers-with-orders.sql",
+    },
   ];
 
   const skills = [
@@ -127,7 +145,7 @@ export default function Home() {
         <div className="container">
           <div className="grid md:grid-cols-4 gap-8">
             <div className="text-center">
-              <div className="text-4xl font-bold text-primary mb-2">4+</div>
+              <div className="text-4xl font-bold text-primary mb-2">6+</div>
               <p className="text-foreground/70">Major Projects</p>
             </div>
             <div className="text-center">
@@ -191,9 +209,11 @@ export default function Home() {
                     </ul>
                   </div>
 
-                  <Button className="bg-primary hover:bg-primary/90 text-white gap-2 w-fit">
-                    View Details <ExternalLink className="w-4 h-4" />
-                  </Button>
+                  <a href={project.url ?? "#contact"} target={project.url ? "_blank" : undefined} rel={project.url ? "noreferrer" : undefined}>
+                    <Button className="bg-primary hover:bg-primary/90 text-white gap-2 w-fit">
+                      {project.url ? "View SQL Solution" : "View Details"} <ExternalLink className="w-4 h-4" />
+                    </Button>
+                  </a>
                 </div>
 
                 <div className={`relative overflow-hidden rounded-xl shadow-lg transition-all duration-300 ${hoveredProject === project.id ? "shadow-2xl scale-105" : ""}`}>
