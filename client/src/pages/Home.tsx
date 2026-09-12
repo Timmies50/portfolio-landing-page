@@ -50,18 +50,20 @@ export default function Home() {
       id: 5,
       title: "Staff Department SQL Challenge",
       description: "A relational SQL analysis identifying every staff member who is not assigned to the HR department by joining staff and department records.",
-      image: "https://d2xsxph8kpxj0f.cloudfront.net/310519663066516107/TA2t7StPE7YiE25pWjBjYs/data-analytics-visual-UGBhBM8mGdo638gS65czAj.webp",
+      image: "/sql-staff-challenge.jpg",
       tags: ["SQL", "Joins", "Data Analysis"],
       highlights: ["INNER JOIN logic", "Department filtering", "Validated result set"],
+      solution: "SELECT s.staff_id, s.staff_name, s.department_id FROM staff AS s INNER JOIN departments AS d ON d.department_id = s.department_id WHERE d.department_name <> 'HR';",
       url: "https://github.com/Timmies50/portfolio-landing-page/blob/main/sql/sql-challenges/staff-not-in-hr.sql",
     },
     {
       id: 6,
       title: "Customers With Orders SQL Challenge",
       description: "A customer-order reporting query that combines customer details with purchased products and order amounts using a focused INNER JOIN.",
-      image: "https://d2xsxph8kpxj0f.cloudfront.net/310519663066516107/TA2t7StPE7YiE25pWjBjYs/data-analytics-visual-UGBhBM8mGdo638gS65czAj.webp",
+      image: "/sql-customers-orders.jpg",
       tags: ["SQL", "INNER JOIN", "Reporting"],
       highlights: ["Customer-order matching", "Purchase reporting", "Expected output included"],
+      solution: "SELECT c.customer_name, c.city, o.product, o.total_amount AS order_amount FROM customers AS c INNER JOIN orders AS o ON o.customer_id = c.customer_id;",
       url: "https://github.com/Timmies50/portfolio-landing-page/blob/main/sql/sql-challenges/customers-with-orders.sql",
     },
   ];
@@ -208,6 +210,13 @@ export default function Home() {
                       ))}
                     </ul>
                   </div>
+
+                  {project.solution && (
+                    <div className="rounded-lg bg-slate-950 p-4 shadow-inner">
+                      <p className="text-label text-accent mb-2">SQL Solution</p>
+                      <code className="block text-xs leading-relaxed text-slate-200 break-words">{project.solution}</code>
+                    </div>
+                  )}
 
                   <a href={project.url ?? "#contact"} target={project.url ? "_blank" : undefined} rel={project.url ? "noreferrer" : undefined}>
                     <Button className="bg-primary hover:bg-primary/90 text-white gap-2 w-fit">
